@@ -665,11 +665,12 @@ function removeFile(e) {
 async function generateAIImage(prompt) {
     console.log('🎨 Generating AI Image for prompt:', prompt);
     try {
+        const apiKey = import.meta.env?.VITE_OPENAI_API_KEY || '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';
         const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
+                'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
                 model: 'openai/dall-e-3',
